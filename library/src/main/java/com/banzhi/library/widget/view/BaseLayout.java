@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.banzhi.library.R;
-import com.banzhi.library.Utils.ViewUtils;
+import com.banzhi.library.utils.ViewUtils;
 
 
 /**

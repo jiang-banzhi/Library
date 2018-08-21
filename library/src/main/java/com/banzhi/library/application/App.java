@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
-import com.banzhi.library.Utils.CrashUtils;
-import com.banzhi.library.Utils.LogUtils;
-import com.banzhi.library.Utils.Utils;
-import com.banzhi.library.Utils.ValidateUtils;
+import com.banzhi.library.utils.CrashUtils;
+import com.banzhi.library.utils.LogUtils;
+import com.banzhi.library.utils.Utils;
+import com.banzhi.library.utils.ValidateUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;

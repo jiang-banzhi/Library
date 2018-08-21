@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
-import com.banzhi.library.Utils.ScreenUtils;
+import com.banzhi.library.utils.ScreenUtils;
 
 
 /**

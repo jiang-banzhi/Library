@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.banzhi.library.R;
-import com.banzhi.library.Utils.PixelUtils;
+import com.banzhi.library.utils.PixelUtils;
 
 
 /**

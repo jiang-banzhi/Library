@@ -22,8 +22,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.banzhi.library.R;
-import com.banzhi.library.Utils.BarUtils;
-import com.banzhi.library.Utils.PermissionHelper;
+import com.banzhi.library.utils.BarUtils;
+import com.banzhi.library.utils.PermissionHelper;
 import com.banzhi.library.application.App;
 import com.banzhi.library.widget.view.BaseLayout;
 
