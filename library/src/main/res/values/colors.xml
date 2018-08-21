@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="baseColorPrimary">#0072bd</color>
+    <color name="baseColorPrimaryDark">#303F9F</color>
+    <color name="baseColorAccent">#FF4081</color>
+    <color name="green">#7cc635</color>
+    <color name="green_press">#609130</color>
+
+    <color name="transparent_80">#80000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="hintText">#999999</color>
+    <color name="textColor">#333333</color>
+    <color name="stroke">#ccc</color>
+
+    <color name="gray">#9f9f9f</color>
+    <color name="red">#e81f18</color>
+    <color name="red_press">#f2504a</color>
+    <color name="bg_title">#e6e6e6</color>
+    <color name="themeColor">#1d9efc</color>
+    <color name="lineColor">#e6e6e6</color>
+    <color name="bg_main">#f2f2f2</color>
+
+    <color name="blue">#4b8ce1</color>
+    <color name="report_text_yellow">#eca613</color>
+    <color name="report_text_blue">#429cce</color>
+    <color name="report_progress_yellow">#ffac04</color>
+</resources>

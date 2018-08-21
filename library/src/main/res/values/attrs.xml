@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="mainBackground" format="color|reference"></attr>
+    <attr name="secondBackground" format="color|reference"></attr>
+
+    <declare-styleable name="MaterialDesignProgressBar">
+        <attr name="progress_stroke_width" format="dimension" />
+        <attr name="progress_stroke_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleProgressBar">
+        <attr name="stroke_width" format="dimension" />
+        <attr name="color_background" format="color" />
+        <attr name="color_arc" format="color" />
+    </declare-styleable>
+    <!--圆形imageview-->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+    <!--缩放imageview-->
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
+    </declare-styleable>
+    <!--loadingbotton-->
+    <declare-styleable name="LoadButton">
+        <attr name="android:text" /><!--显示的内容-->
+        <attr name="android:textColor" /><!--字体颜色-->
+        <attr name="android:textSize" /><!--字体大小-->
+        <attr name="backColor" format="color|reference" /><!--背景颜色-->
+        <!--文字内边距padding-->
+        <attr name="android:padding" />
+        <attr name="android:paddingLeft" />
+        <attr name="android:paddingRight" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingBottom" />
+        <!--进度条-->
+        <attr name="progressColor" format="color|reference" /><!--进度条颜色-->
+        <attr name="progressBackColor" format="color|reference" /><!--进度条背景色-->
+        <attr name="progressWidth" format="dimension|reference" /><!--进度条前景色-->
+        <!--图片-->
+        <attr name="errorDrawable" format="reference" /><!--失败显示的图片-->
+        <attr name="successDrawable" format="reference" /><!--成功显示的图片-->
+    </declare-styleable>
+
+    <declare-styleable name="RoundOrRectangleImageView">
+        <attr name="radio" format="dimension" />
+        <attr name="type" format="enum">
+            <enum name="circle" value="0" />
+            <enum name="round" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>
