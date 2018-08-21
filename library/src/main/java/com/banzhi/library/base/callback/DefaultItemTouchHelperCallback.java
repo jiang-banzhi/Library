@@ -6,8 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-import com.jiang.baselibrary.base.BaseItemDragAdapter;
-import com.jiang.baselibrary.base.BaseRecyclerViewAdapter;
+import com.banzhi.library.base.BaseItemDragAdapter;
+import com.banzhi.library.base.BaseRecyclerViewAdapter;
+
 
 /**
  * <pre>
