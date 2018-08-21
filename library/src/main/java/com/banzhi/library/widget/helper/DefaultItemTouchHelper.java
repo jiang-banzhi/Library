@@ -2,7 +2,8 @@ package com.banzhi.library.widget.helper;
 
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-import com.jiang.baselibrary.base.callback.DefaultItemTouchHelperCallback;
+import com.banzhi.library.base.callback.DefaultItemTouchHelperCallback;
+
 
 /**
  * <pre>
