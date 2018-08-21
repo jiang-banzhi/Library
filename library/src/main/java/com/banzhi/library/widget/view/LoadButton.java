@@ -22,7 +22,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.jiang.baselibrary.R;
+import com.banzhi.library.R;
 
 
 /**

@@ -11,8 +11,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.jiang.baselibrary.R;
-import com.jiang.baselibrary.utils.PixelUtils;
+import com.banzhi.library.R;
+import com.banzhi.library.Utils.PixelUtils;
 
 
 /**

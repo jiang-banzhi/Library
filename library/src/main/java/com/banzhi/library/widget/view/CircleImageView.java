@@ -1,4 +1,5 @@
 package com.banzhi.library.widget.view;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -20,7 +21,7 @@ import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.jiang.baselibrary.R;
+import com.banzhi.library.R;
 
 
 public class CircleImageView extends ImageView {

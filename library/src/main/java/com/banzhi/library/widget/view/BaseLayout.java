@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-import com.jiang.baselibrary.R;
-import com.jiang.baselibrary.utils.ViewUtils;
+import com.banzhi.library.R;
+import com.banzhi.library.Utils.ViewUtils;
 
 
 /**

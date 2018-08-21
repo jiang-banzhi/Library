@@ -1,7 +1,7 @@
 package com.banzhi.library.widget.view;
 
 
-import com.jiang.baselibrary.R;
+import com.banzhi.library.R;
 
 /**
  * Created by BlingBling on 2016/10/11.

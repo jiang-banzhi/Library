@@ -1,7 +1,7 @@
 package com.banzhi.library.widget.view;
 
 
-import com.jiang.baselibrary.base.BaseViewHolder;
+import com.banzhi.library.base.BaseViewHolder;
 
 /**
  * <pre>
