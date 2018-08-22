@@ -8,6 +8,7 @@ import com.banzhi.library.utils.CrashUtils;
 import com.banzhi.library.utils.LogUtils;
 import com.banzhi.library.utils.Utils;
 import com.banzhi.library.utils.ValidateUtils;
+import com.banzhi.rxhttp.RxHttp;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -59,6 +60,8 @@ public abstract class App extends Application {
         initUtils();
         intLog();
         initCrash();
+        RxHttp.init(getApplicationContext());
+        RxHttp.getInstance(getBaseUrl()).create();
     }
 
     /**
