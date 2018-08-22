@@ -31,7 +31,7 @@ dependencies {
     implementation rootProject.ext.dependencies.appCompat
     implementation rootProject.ext.dependencies.design
     implementation rootProject.ext.dependencies.gson
-    compile 'com.banzhi.rxhttp:rxhttp:1.0.4'
+    compile 'com.banzhi.rxhttp:rxhttp:1.0.5'
     compile 'com.jiangyang.permission:permission:1.0.0'
     compile 'com.banzhi.indexrecyclerview:indexrecyclerview:1.0.3'
     compile 'com.banzhi.easyintent:easyintentlib:1.0.1'
