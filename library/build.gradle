@@ -31,9 +31,9 @@ dependencies {
     implementation rootProject.ext.dependencies.appCompat
     implementation rootProject.ext.dependencies.design
     implementation rootProject.ext.dependencies.gson
-    api 'com.banzhi.rxhttp:rxhttp:1.0.4'
-    api 'com.jiangyang.permission:permission:1.0.0'
-    api 'com.banzhi.indexrecyclerview:indexrecyclerview:1.0.3'
-    api 'com.banzhi.easyintent:easyintentlib:1.0.1'
+    compile 'com.banzhi.rxhttp:rxhttp:1.0.4'
+    compile 'com.jiangyang.permission:permission:1.0.0'
+    compile 'com.banzhi.indexrecyclerview:indexrecyclerview:1.0.3'
+    compile 'com.banzhi.easyintent:easyintentlib:1.0.1'
 }
 apply from: 'mevan.gradle'
