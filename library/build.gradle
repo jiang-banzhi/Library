@@ -21,7 +21,7 @@ android {
     }
 
 }
-
+//apply from: 'https://raw.githubusercontent.com/adwiv/android-fat-aar/master/fat-aar.gradle'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -36,4 +36,5 @@ dependencies {
     compile 'com.banzhi.indexrecyclerview:indexrecyclerview:1.0.3'
     compile 'com.banzhi.easyintent:easyintentlib:1.0.1'
 }
+//apply from: 'publish.gradle'
 apply from: 'mevan.gradle'

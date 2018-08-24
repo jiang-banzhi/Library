@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="mainBackground" format="color|reference"></attr>
-    <attr name="secondBackground" format="color|reference"></attr>
-
     <declare-styleable name="MaterialDesignProgressBar">
         <attr name="progress_stroke_width" format="dimension" />
         <attr name="progress_stroke_color" format="color" />

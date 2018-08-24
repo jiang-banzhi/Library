@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.jiang.baselibrary.widget.MaterialDesignProgressBar
+    <com.banzhi.library.widget.view.MaterialDesignProgressBar
         android:id="@+id/dialog_progress"
         android:layout_width="60dp"
         android:layout_height="60dp"
