@@ -52,8 +52,8 @@ public class BaseLayout extends RelativeLayout implements View.OnClickListener {
         addView(contentView, contentParmas);
         //2.将空数据emptyview添加到布局
         if (emptyView == null) {
-//            emptyView = inflate(context, R.layout.base_view_default_empty, null);
-            emptyView = getEmptyView(context);
+            emptyView = inflate(context, R.layout.base_view_default_empty, null);
+//            emptyView = getEmptyView(context);
         }
         mEmptyView = emptyView;
         LayoutParams emptyParams = new LayoutParams(LayoutParams.MATCH_PARENT,
@@ -61,8 +61,8 @@ public class BaseLayout extends RelativeLayout implements View.OnClickListener {
         addView(mEmptyView, emptyParams);
         //3.将错误页errorview添加到布局
         if (errorView == null) {
-//            errorView = inflate(context, R.layout.base_view_default_error, null);
-            errorView = getErrorView(context);
+            errorView = inflate(context, R.layout.base_view_default_error, null);
+//            errorView = getErrorView(context);
         }
         mErrorView = errorView;
         LayoutParams errorParams = new LayoutParams(LayoutParams.MATCH_PARENT,
@@ -71,7 +71,7 @@ public class BaseLayout extends RelativeLayout implements View.OnClickListener {
         //4.添加进度条
         if (loadingView == null) {
             loadingView = inflate(context, R.layout.base_view_default_progressbar, null);
-            loadingView = getLoadingView(context);
+//            loadingView = getLoadingView(context);
         }
         mLoadingView = loadingView;
         LayoutParams pbParams = new LayoutParams(LayoutParams.MATCH_PARENT,
