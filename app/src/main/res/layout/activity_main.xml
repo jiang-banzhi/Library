@@ -15,10 +15,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.banzhi.library.widget.view.RoundOrRectangleImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/base_http_empty" />
 
 
 </android.support.constraint.ConstraintLayout>

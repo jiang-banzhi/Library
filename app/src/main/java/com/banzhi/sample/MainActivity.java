@@ -3,7 +3,8 @@ package com.banzhi.sample;
 import android.os.Bundle;
 import android.view.View;
 
-import com.banzhi.library.base.IBaseActivity;
+import com.banzhi.lib.base.IBaseActivity;
+
 
 public class MainActivity extends IBaseActivity {
 

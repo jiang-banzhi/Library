@@ -5,13 +5,13 @@ ext {
     ]
 
     android = [
-            applicationId    : "com.banzhi.library",
+            applicationId    : "com.banzhi.lib",
             compileSdkVersion: 26,
             buildToolsVersion: "26.0.2",
             minSdkVersion    : 14,
             targetSdkVersion : 26,
             versionCode      : 1,
-            versionName      : "1.0.6"
+            versionName      : "1.0.1"
     ]
 
 
@@ -40,7 +40,7 @@ ext {
 
             version       : android.versionName,
 
-            group         : "com.banzhi.library", // Maven Group ID for the artifact，一般填你唯一的包名
+            group         : android.applicationId, // Maven Group ID for the artifact，一般填你唯一的包名
 
             siteUrl       : 'https://github.com/jiang-banzhi/Library',   // 项目的主页
             gitUrl        : 'https://github.com/jiang-banzhi/Library.git',   // Git仓库的url
