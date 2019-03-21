@@ -1,15 +1,10 @@
 package com.banzhi.library.widget.view;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.banzhi.library.R;
@@ -53,7 +48,6 @@ public class BaseLayout extends RelativeLayout implements View.OnClickListener {
         //2.将空数据emptyview添加到布局
         if (emptyView == null) {
             emptyView = inflate(context, R.layout.base_view_default_empty, null);
-//            emptyView = getEmptyView(context);
         }
         mEmptyView = emptyView;
         LayoutParams emptyParams = new LayoutParams(LayoutParams.MATCH_PARENT,
@@ -62,7 +56,6 @@ public class BaseLayout extends RelativeLayout implements View.OnClickListener {
         //3.将错误页errorview添加到布局
         if (errorView == null) {
             errorView = inflate(context, R.layout.base_view_default_error, null);
-//            errorView = getErrorView(context);
         }
         mErrorView = errorView;
         LayoutParams errorParams = new LayoutParams(LayoutParams.MATCH_PARENT,
@@ -71,7 +64,6 @@ public class BaseLayout extends RelativeLayout implements View.OnClickListener {
         //4.添加进度条
         if (loadingView == null) {
             loadingView = inflate(context, R.layout.base_view_default_progressbar, null);
-//            loadingView = getLoadingView(context);
         }
         mLoadingView = loadingView;
         LayoutParams pbParams = new LayoutParams(LayoutParams.MATCH_PARENT,
@@ -84,69 +76,6 @@ public class BaseLayout extends RelativeLayout implements View.OnClickListener {
         mEmptyView.setOnClickListener(this);
         mErrorView.setOnClickListener(this);
 
-    }
-
-    private View getEmptyView(Context context) {
-        LinearLayout linearLayout = new LinearLayout(context);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
-        layoutParams.gravity = Gravity.CENTER;
-        linearLayout.setLayoutParams(layoutParams);
-        ImageView emptyView = new ImageView(context);
-        LinearLayout.LayoutParams emptyParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        emptyView.setImageResource(R.drawable.base_http_empty);
-        emptyView.setLayoutParams(emptyParams);
-        linearLayout.addView(emptyView);
-        return linearLayout;
-    }
-
-    private View getErrorView(Context context) {
-        LinearLayout linearLayout = new LinearLayout(context);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
-        layoutParams.gravity = Gravity.CENTER;
-        linearLayout.setLayoutParams(layoutParams);
-        ImageView emptyView = new ImageView(context);
-        LinearLayout.LayoutParams emptyParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        emptyView.setImageResource(R.drawable.base_http_error);
-        emptyView.setLayoutParams(emptyParams);
-        linearLayout.addView(emptyView);
-        return linearLayout;
-
-    }
-
-    private View getLoadingView(Context context) {
-        LinearLayout linearLayout = new LinearLayout(context);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
-        layoutParams.gravity = Gravity.CENTER;
-        linearLayout.setLayoutParams(layoutParams);
-        MaterialDesignProgressBar emptyView = new MaterialDesignProgressBar(context);
-        LinearLayout.LayoutParams emptyParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        emptyView.setBackgroundColor(Color.WHITE);
-        emptyView.setLayoutParams(emptyParams);
-        linearLayout.addView(emptyView);
-        return linearLayout;
-
-    }
-
-    public void setEmptyView(Context context, int resId) {
-        removeView(mEmptyView);
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mEmptyView = inflater.inflate(resId, null);
-        FrameLayout frameLayout = new FrameLayout(getContext());
-        FrameLayout.LayoutParams emptyViewParams = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
-                LayoutParams.WRAP_CONTENT);
-        emptyViewParams.gravity = Gravity.CENTER;
-        LayoutParams emptyLayoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,
-                LayoutParams.MATCH_PARENT);
-        frameLayout.addView(mEmptyView, emptyViewParams);
-        addView(frameLayout, emptyLayoutParams);
-        mEmptyView.setTag(TAG_EMPTY);
-        mEmptyView.setOnClickListener(this);
     }
 
     @Override
