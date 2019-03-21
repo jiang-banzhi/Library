@@ -27,16 +27,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation rootProject.ext.dependencies.appCompat
-    implementation rootProject.ext.dependencies.design
-    implementation rootProject.ext.dependencies.gson
+    compile rootProject.ext.dependencies.appCompat
+    compile rootProject.ext.dependencies.design
+    compile rootProject.ext.dependencies.gson
     compile 'com.banzhi.rxhttp:rxhttp:1.0.8'
     compile 'com.jiangyang.permission:permission:1.0.2'
     compile 'com.banzhi.indexrecyclerview:indexrecyclerview:1.0.4'
     compile 'com.banzhi.easyintent:easyintentlib:1.0.1'
+    compile 'com.banzhi.emptysample:emptylibrary:1.0.1'
     //AutoDispose解决RxJava内存泄漏
-    api 'com.uber.autodispose:autodispose:0.8.0'
-    api 'com.uber.autodispose:autodispose-android:0.8.0'
-    api 'com.uber.autodispose:autodispose-android-archcomponents:0.8.0'
+    compile 'com.uber.autodispose:autodispose:0.8.0'
+    compile 'com.uber.autodispose:autodispose-android:0.8.0'
+    compile 'com.uber.autodispose:autodispose-android-archcomponents:0.8.0'
 }
 apply from: 'mevan.gradle'
