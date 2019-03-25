@@ -9,6 +9,7 @@ import com.banzhi.lib.utils.LogUtils;
 import com.banzhi.lib.utils.Utils;
 import com.banzhi.lib.utils.ValidateUtils;
 import com.banzhi.rxhttp.RxHttp;
+import com.banzhi.rxhttp.interceptor.RetryInterceptor;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,18 +35,18 @@ public abstract class App extends Application {
     protected abstract String getBaseUrl();
 
     /**
-     * 网络请求地址
-     *
-     * @return
-     */
-    protected abstract String getFileUrl();
-
-    /**
      * 崩溃日志保存目录
      *
      * @return
      */
     protected abstract String getCrashDir();
+
+    /**
+     * token过期处理
+     *
+     * @return
+     */
+    protected abstract RetryInterceptor.TokenProxy getTokenProxy();
 
     /**
      * 初始tinker
@@ -61,7 +62,9 @@ public abstract class App extends Application {
         intLog();
         initCrash();
         RxHttp.init(getApplicationContext());
-        RxHttp.getInstance(getBaseUrl()).create();
+        RxHttp.getInstance(getBaseUrl())
+                .setTokenProxy(getTokenProxy())
+                .create();
     }
 
     /**
