@@ -1,6 +1,7 @@
 package com.banzhi.sample;
 
 import com.banzhi.lib.application.App;
+import com.banzhi.rxhttp.interceptor.RetryInterceptor;
 
 /**
  * <pre>
@@ -18,12 +19,12 @@ public class MyAppLication extends App {
     }
 
     @Override
-    protected String getFileUrl() {
+    protected String getCrashDir() {
         return null;
     }
 
     @Override
-    protected String getCrashDir() {
+    protected RetryInterceptor.TokenProxy getTokenProxy() {
         return null;
     }
 

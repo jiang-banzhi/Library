@@ -1,7 +1,6 @@
-package  com.banzhi.lib.base;
+package com.banzhi.lib.base;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -48,29 +47,12 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        updateTheme(savedInstanceState);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            //设置界面进入 退出动画  Slide滑动  Explode破碎  Fade淡出
-//            //第一次进入时使用
-//            getWindow().setEnterTransition(new Slide(Gravity.LEFT).setDuration(500));
-//            //退出时使用
-//            getWindow().setExitTransition(new Slide(Gravity.RIGHT).setDuration(500));
-//            //再次进入时使用
-//            getWindow().setReenterTransition(new Slide(Gravity.LEFT).setDuration(500));
-//        }
         App.addActivity(this);
         mViews = new SparseArray<>();
-     setOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         iniActionbarColor();
         setContentView(getLayoutId());
         init(savedInstanceState);
     }
-    protected  void setOrientation(int requestedOrientation){
-        setRequestedOrientation(requestedOrientation);
-    }
-
-//    protected abstract void updateTheme(Bundle savedInstanceState);
 
 
     @Override
@@ -97,16 +79,15 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
     protected void initFragment(Bundle savedInstanceState) {
     }
 /**
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-                finish();
-                return true;
-            }
-        }
-        return super.onKeyDown(keyCode, event);
-    }*/
+ @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+ if (keyCode == KeyEvent.KEYCODE_BACK) {
+ if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+ finish();
+ return true;
+ }
+ }
+ return super.onKeyDown(keyCode, event);
+ }*/
 
     /**
      * 获取数据传递intent
@@ -193,9 +174,6 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         String toClassName = toFragment.getClass().getSimpleName();
-//transaction.setCustomAnimations(R.anim.slide_fade_right_enter,
-// R.anim.slide_left_exit, R.anim.slide_fade_left_enter, R.anim.slide_right_exit);//自定义动画
-
         if (manager.findFragmentByTag(toClassName) == null) {//没有添加过
             transaction.replace(containerViewId, toFragment, toClassName);
             if (backStack) {
@@ -215,8 +193,8 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
     public void smartFragmentReplace(int target, Fragment toFragment) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.setCustomAnimations( R.anim.slide_fade_right_enter,  R.anim.slide_left_exit,
-                R.anim.slide_fade_left_enter,  R.anim.slide_right_exit);//自定义动画
+        transaction.setCustomAnimations(R.anim.slide_fade_right_enter, R.anim.slide_left_exit,
+                R.anim.slide_fade_left_enter, R.anim.slide_right_exit);//自定义动画
 //        transaction.setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);//默认动画
         // 如有当前在使用的->隐藏当前的
         if (currentFragment != null) {
@@ -242,9 +220,8 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
     public void smartFragmentReplace(int target, Fragment toFragment, boolean hideCurrentFragment) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.setCustomAnimations( R.anim.slide_fade_right_enter,  R.anim.slide_left_exit,
-                 R.anim.slide_fade_left_enter,  R.anim.slide_right_exit);//自定义动画
-//        transaction.setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);//默认动画
+        transaction.setCustomAnimations(R.anim.slide_fade_right_enter, R.anim.slide_left_exit,
+                R.anim.slide_fade_left_enter, R.anim.slide_right_exit);//自定义动画
         // 如有当前在使用的->隐藏当前的
         if (currentFragment != null) {
             if (hideCurrentFragment) {
@@ -272,7 +249,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
     }
 
     protected void setScrollFlg(@AppBarLayout.LayoutParams.ScrollFlags int flags) {
-        AppBarLayout appbar = (AppBarLayout) findViewById( R.id.appbar);
+        AppBarLayout appbar = (AppBarLayout) findViewById(R.id.appbar);
         AppBarLayout.LayoutParams mParams = (AppBarLayout.LayoutParams) appbar.getChildAt(0).getLayoutParams();
         mParams.setScrollFlags(flags);//的时候AppBarLayout下的toolbar就不会随着滚动条折叠
 
@@ -314,10 +291,10 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
      */
     private View buildToolbarView(View view) {
         if (hasToolbarLayout()) {
-            View groupView = LayoutInflater.from(this).inflate( R.layout.base_view_base_layout, null);
-            mToolbar = (Toolbar) groupView.findViewById( R.id.toolbar);
+            View groupView = LayoutInflater.from(this).inflate(R.layout.base_view_base_layout, null);
+            mToolbar = (Toolbar) groupView.findViewById(R.id.toolbar);
             setSupportActionBar(mToolbar);
-            ViewGroup viewGroup = (ViewGroup) groupView.findViewById( R.id.content_container);
+            ViewGroup viewGroup = (ViewGroup) groupView.findViewById(R.id.content_container);
             viewGroup.addView(view);
             return groupView;
         }
@@ -446,11 +423,11 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
 
 
     public void showShanck(String msg) {
-        showShanck(msg, false,  R.color.baseColorAccent);
+        showShanck(msg, false, R.color.baseColorAccent);
     }
 
     public void showShanck(String msg, boolean hasAction) {
-        showShanck(msg, hasAction,  R.color.baseColorAccent);
+        showShanck(msg, hasAction, R.color.baseColorAccent);
     }
 
     public void showShanck(String msg, boolean hasAction, int actionColor) {
@@ -592,8 +569,8 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
             intent.setAction(action);
         }
 //        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            startActivityForResult(intent, requestCode);
-            overrideAnim(0);
+        startActivityForResult(intent, requestCode);
+        overrideAnim(0);
 //        } else {
 //            bundleOption = bundleOption == null ? ActivityOptions.makeSceneTransitionAnimation(this).toBundle() : bundleOption;
 //            startActivityForResult(intent, requestCode, bundleOption);
@@ -659,12 +636,8 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
             onFragmentBack();
             getSupportFragmentManager().popBackStack();
         } else {
-//            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                randomExit((int) (Math.random() * 10 % 4));
-                finish();
-//            } else {
-//                ActivityCompat.finishAfterTransition(this);
-//            }
+            randomExit((int) (Math.random() * 10 % 4));
+            finish();
         }
 
     }
@@ -679,16 +652,18 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
     protected void randomExit(int rand) {
         switch (rand) {
             case 0:
-                overridePendingTransition( R.anim.slide_fade_right_enter,  R.anim.slide_left_exit);
+                overridePendingTransition(R.anim.slide_fade_right_enter, R.anim.slide_left_exit);
                 break;
             case 1:
-                overridePendingTransition( R.anim.slide_fade_left_enter,  R.anim.slide_right_exit);
+                overridePendingTransition(R.anim.slide_fade_left_enter, R.anim.slide_right_exit);
                 break;
             case 2:
-                overridePendingTransition( R.anim.slide_fade_top_enter,  R.anim.slide_bottom_exit);
+                overridePendingTransition(R.anim.slide_fade_top_enter, R.anim.slide_bottom_exit);
                 break;
             case 3:
-                overridePendingTransition( R.anim.slide_fade_bottom_enter,  R.anim.slide_top_exit);
+                overridePendingTransition(R.anim.slide_fade_bottom_enter, R.anim.slide_top_exit);
+                break;
+            default:
                 break;
         }
     }
@@ -701,16 +676,18 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
     private void overrideAnim(int mode) {
         switch (mode) {
             case 0:
-                overridePendingTransition( R.anim.slide_fade_right_enter,  R.anim.slide_left_exit);
+                overridePendingTransition(R.anim.slide_fade_right_enter, R.anim.slide_left_exit);
                 break;
             case 1:
-                overridePendingTransition( R.anim.slide_fade_left_enter,  R.anim.slide_right_exit);
+                overridePendingTransition(R.anim.slide_fade_left_enter, R.anim.slide_right_exit);
                 break;
             case 2:
-                overridePendingTransition( R.anim.slide_fade_top_enter,  R.anim.slide_bottom_exit);
+                overridePendingTransition(R.anim.slide_fade_top_enter, R.anim.slide_bottom_exit);
                 break;
             case 3:
-                overridePendingTransition( R.anim.slide_fade_bottom_enter,  R.anim.slide_top_exit);
+                overridePendingTransition(R.anim.slide_fade_bottom_enter, R.anim.slide_top_exit);
+                break;
+            default:
                 break;
         }
     }

@@ -25,7 +25,9 @@ public abstract class IBaseFragment<V extends IView, T extends BasePresenter<V>>
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = getInstance(this, 1);
-        mPresenter.attachView((V) this);
+        if (mPresenter != null) {
+            mPresenter.attachView((V) this);
+        }
     }
 
     @Override
@@ -59,7 +61,7 @@ public abstract class IBaseFragment<V extends IView, T extends BasePresenter<V>>
 
     @Override
     public <T> AutoDisposeConverter<T> bindAutoDispose() {
-        return  AutoDispose.autoDisposable(AndroidLifecycleScopeProvider
+        return AutoDispose.autoDisposable(AndroidLifecycleScopeProvider
                 .from(this, Lifecycle.Event.ON_DESTROY));
     }
 }
