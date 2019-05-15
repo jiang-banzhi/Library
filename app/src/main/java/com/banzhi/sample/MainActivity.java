@@ -14,11 +14,6 @@ public class MainActivity extends IBaseActivity {
     protected boolean hasBaseLayout() {
         return false;
     }
-//
-//    @Override
-//    protected boolean hasToolbarLayout() {
-//        return false;
-//    }
 
     @Override
     protected int getLayoutId() {

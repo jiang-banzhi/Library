@@ -30,7 +30,7 @@ import com.banzhi.library.R;
 public abstract class AbsBaseFragment extends Fragment implements BaseLayout.OnBaseLayoutClickListener, View.OnClickListener {
 
 
-    AbsBaseActivity mActivity;
+    protected AbsBaseActivity mActivity;
 
     private SparseArray<View> mViews;
     //根布局

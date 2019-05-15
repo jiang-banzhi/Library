@@ -36,5 +36,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation rootProject.ext.dependencies.design
 //    compile project(":library")
-    compile 'com.banzhi.lib:library:1.0.2'
+    compile 'com.banzhi.lib:library:1.0.4'
 }
