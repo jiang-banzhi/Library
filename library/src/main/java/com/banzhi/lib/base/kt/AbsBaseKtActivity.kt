@@ -71,7 +71,7 @@ abstract class AbsBaseKtActivity : AppCompatActivity(), View.OnClickListener, Ba
         initListener()
     }
 
-    protected fun initFragment(savedInstanceState: Bundle?) {}
+    protected open fun initFragment(savedInstanceState: Bundle?) {}
 
 
     /**
@@ -79,7 +79,7 @@ abstract class AbsBaseKtActivity : AppCompatActivity(), View.OnClickListener, Ba
      *
      * @param intent
      */
-    protected fun handleIntent(intent: Intent) {
+    protected open fun handleIntent(intent: Intent) {
 
 
     }
@@ -273,7 +273,7 @@ abstract class AbsBaseKtActivity : AppCompatActivity(), View.OnClickListener, Ba
     /**
      * @return
      */
-    protected fun initTitleView(): View? {
+    protected open fun initTitleView(): View? {
         if (mTitleView == null && isTitleCenter()) {
             mTitleView = TextView(this)
             mTitleView!!.gravity = Gravity.CENTER
@@ -339,7 +339,7 @@ abstract class AbsBaseKtActivity : AppCompatActivity(), View.OnClickListener, Ba
      *
      * @return
      */
-    protected fun hasToolbarLayout(): Boolean {
+    protected open fun hasToolbarLayout(): Boolean {
         return true
     }
 
@@ -348,7 +348,7 @@ abstract class AbsBaseKtActivity : AppCompatActivity(), View.OnClickListener, Ba
      *
      * @return
      */
-    protected fun hasBaseLayout(): Boolean {
+    protected open fun hasBaseLayout(): Boolean {
         return true
     }
 
@@ -357,7 +357,7 @@ abstract class AbsBaseKtActivity : AppCompatActivity(), View.OnClickListener, Ba
      *
      * @return
      */
-    protected fun isTitleCenter(): Boolean {
+    protected open fun isTitleCenter(): Boolean {
         return false
     }
 
@@ -559,7 +559,7 @@ abstract class AbsBaseKtActivity : AppCompatActivity(), View.OnClickListener, Ba
 
     }
 
-    protected fun onFragmentBack() {
+    protected open fun onFragmentBack() {
 
     }
 
