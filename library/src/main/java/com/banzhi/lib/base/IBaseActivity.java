@@ -22,6 +22,8 @@ public abstract class IBaseActivity<V extends IView, T extends BasePresenter<V>>
         super.onCreate(savedInstanceState);
     }
 
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

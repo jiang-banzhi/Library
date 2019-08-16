@@ -1,4 +1,6 @@
 apply plugin: rootProject.ext.plugins.library
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -30,14 +32,19 @@ dependencies {
     compile rootProject.ext.dependencies.appCompat
     compile rootProject.ext.dependencies.design
     compile rootProject.ext.dependencies.gson
+    compile rootProject.ext.dependencies.flexbox
     compile 'com.banzhi.rxhttp:rxhttp:1.0.9'
-    compile 'com.jiangyang.permission:permission:1.0.2'
+    compile 'com.banzhi.permission:permission:2.0.1'
     compile 'com.banzhi.indexrecyclerview:indexrecyclerview:1.0.4'
     compile 'com.banzhi.easyintent:easyintentlib:1.0.1'
-    compile 'com.banzhi.emptysample:emptylibrary:1.0.1'
+    compile 'com.banzhi.statusmanager:library:1.0.3'
     //AutoDispose解决RxJava内存泄漏
     compile 'com.uber.autodispose:autodispose:0.8.0'
     compile 'com.uber.autodispose:autodispose-android:0.8.0'
     compile 'com.uber.autodispose:autodispose-android-archcomponents:0.8.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 apply from: 'mevan.gradle'
+repositories {
+    mavenCentral()
+}

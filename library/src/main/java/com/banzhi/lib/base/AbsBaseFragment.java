@@ -13,7 +13,6 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.banzhi.lib.widget.view.BaseLayout;
 import com.banzhi.library.R;
@@ -45,8 +44,6 @@ public abstract class AbsBaseFragment extends Fragment implements BaseLayout.OnB
     private boolean mIsVisiable = false;
     //是否已销毁
     private boolean mIsDestroyed;
-
-    private Toast mToast;
 
     Snackbar snackbar;
 
@@ -184,7 +181,6 @@ public abstract class AbsBaseFragment extends Fragment implements BaseLayout.OnB
         }
         initData();
         initListener();
-//        loadData();
         //设置已经不是第一次加载
         mIsFirstLoad = false;
     }
@@ -238,40 +234,7 @@ public abstract class AbsBaseFragment extends Fragment implements BaseLayout.OnB
         processClick(v);
     }
 
-    /**
-     * 显示toast
-     *
-     * @param msg      提示内容
-     * @param duration 提示时长
-     */
-    public void showToast(String msg, int duration) {
-        if (mToast == null) {
-            mToast = Toast.makeText(mActivity, msg, duration);
-            mToast.show();
-        } else {
-            mToast.setText(msg);
-            mToast.setDuration(duration);
-            mToast.show();
-        }
-    }
 
-    /**
-     * 显示短时长toast
-     *
-     * @param msg 提示内容
-     */
-    public void shortToast(String msg) {
-        showToast(msg, Toast.LENGTH_SHORT);
-    }
-
-    /**
-     * 显示长时长toast
-     *
-     * @param msg 提示内容
-     */
-    public void longToast(String msg) {
-        showToast(msg, Toast.LENGTH_LONG);
-    }
 
     @Override
     public void onEmptyViewClick() {
@@ -417,14 +380,8 @@ public abstract class AbsBaseFragment extends Fragment implements BaseLayout.OnB
         if (!TextUtils.isEmpty(action)) {
             intent.setAction(action);
         }
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
         startActivityForResult(intent, requestCode);
-//        overrideAnim(0);
-//        } else {
-//            bundleOption = bundleOption == null ? ActivityOptions.makeSceneTransitionAnimation(mActivity).toBundle() : bundleOption;
-//            startActivityForResult(intent, requestCode, bundleOption);
-//
-//        }
+        overrideAnim(0);
         if (isFinished) {
             mActivity.finish();
         }
@@ -484,20 +441,6 @@ public abstract class AbsBaseFragment extends Fragment implements BaseLayout.OnB
                 break;
             default:
         }
-    }
-
-    private static final String MPARAM = "param";
-
-    protected Bundle getBundle(String... params) {
-        Bundle bundle = new Bundle();
-        int count = params.length;
-        if (params == null || count == 0) {
-            return bundle;
-        }
-        for (int i = 0; i < count; i++) {
-            bundle.putString(MPARAM + i, params[i]);
-        }
-        return bundle;
     }
 
 

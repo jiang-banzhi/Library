@@ -1,10 +1,9 @@
 package com.banzhi.lib.base;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.Snackbar;
@@ -16,13 +15,14 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.banzhi.lib.application.App;
 import com.banzhi.lib.utils.BarUtils;
-import com.banzhi.lib.utils.PermissionHelper;
 import com.banzhi.lib.widget.view.BaseLayout;
 import com.banzhi.library.R;
 
@@ -39,7 +39,7 @@ import static android.support.design.widget.AppBarLayout.LayoutParams.SCROLL_FLA
  */
 
 public abstract class AbsBaseActivity extends AppCompatActivity implements BaseLayout.OnBaseLayoutClickListener, View.OnClickListener {
-    public static String TAG = "result";
+    public static String TAG = "TAG";
     protected BaseLayout mBaseLayout;
     private SparseArray<View> mViews;
     private Snackbar snackbar;
@@ -65,7 +65,9 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
      * 初始状态汇总
      */
     protected void init(Bundle savedInstanceState) {
-        Log.e(TAG, "init:当前activity==> " + this.getClass().getSimpleName());
+        Log.e(TAG, "********************************************************");
+        Log.e(TAG, "** init:当前activity==> " + this.getClass().getSimpleName());
+        Log.e(TAG, "********************************************************");
         showContentView();
         if (null != getIntent()) {
             handleIntent(getIntent());
@@ -78,16 +80,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
 
     protected void initFragment(Bundle savedInstanceState) {
     }
-/**
- @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
- if (keyCode == KeyEvent.KEYCODE_BACK) {
- if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
- finish();
- return true;
- }
- }
- return super.onKeyDown(keyCode, event);
- }*/
+
 
     /**
      * 获取数据传递intent
@@ -179,7 +172,6 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
             if (backStack) {
                 transaction.addToBackStack(toClassName);
             }
-
             transaction.commit();
         }
     }
@@ -191,25 +183,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
      * @target 容器id
      */
     public void smartFragmentReplace(int target, Fragment toFragment) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.setCustomAnimations(R.anim.slide_fade_right_enter, R.anim.slide_left_exit,
-                R.anim.slide_fade_left_enter, R.anim.slide_right_exit);//自定义动画
-//        transaction.setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);//默认动画
-        // 如有当前在使用的->隐藏当前的
-        if (currentFragment != null) {
-            transaction.hide(currentFragment);
-        }
-        String toClassName = toFragment.getClass().getSimpleName();
-        // toFragment之前添加使用过->显示出来
-        if (manager.findFragmentByTag(toClassName) != null) {
-            transaction.show(toFragment);
-        } else {// toFragment还没添加使用过->添加上去
-            transaction.add(target, toFragment, toClassName);
-        }
-        transaction.commit();
-        // toFragment更新为当前的
-        currentFragment = toFragment;
+        smartFragmentReplace(target, toFragment, true);
     }
 
     /**
@@ -292,33 +266,47 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
     private View buildToolbarView(View view) {
         if (hasToolbarLayout()) {
             View groupView = LayoutInflater.from(this).inflate(R.layout.base_view_base_layout, null);
-            mToolbar = (Toolbar) groupView.findViewById(R.id.toolbar);
+            mToolbar = groupView.findViewById(R.id.toolbar);
             setSupportActionBar(mToolbar);
-            ViewGroup viewGroup = (ViewGroup) groupView.findViewById(R.id.content_container);
+            if (isTitleCenter()) {
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                mToolbar.addView(initTitleView());
+            }
+            ViewGroup viewGroup = groupView.findViewById(R.id.content_container);
             viewGroup.addView(view);
             return groupView;
         }
         return view;
     }
 
-    public Toolbar mToolbar;
 
     /**
-     * 设置主标题
-     *
-     * @param title 标题内容
+     * @return
      */
-    public void setTitle(CharSequence title) {
-        getSupportActionBar().setTitle(title);
+    protected View initTitleView() {
+        if (mTitleView == null && isTitleCenter()) {
+            mTitleView = new TextView(this);
+            mTitleView.setGravity(Gravity.CENTER);
+            mTitleView.setTextColor(Color.WHITE);
+            mTitleView.setSingleLine();
+            mTitleView.setEllipsize(TextUtils.TruncateAt.END);
+            Toolbar.LayoutParams params = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.MATCH_PARENT);
+            params.gravity = Gravity.CENTER;
+            mTitleView.setLayoutParams(params);
+        }
+        return mTitleView;
     }
 
-    /**
-     * 设置主标题
-     *
-     * @param resId 标题内容
-     */
-    public void setTitle(@StringRes int resId) {
-        getSupportActionBar().setTitle(resId);
+    public Toolbar mToolbar;
+
+    private TextView mTitleView;
+
+    @Override
+    protected void onTitleChanged(CharSequence title, int color) {
+        super.onTitleChanged(title, color);
+        if (mTitleView != null && isTitleCenter()) {
+            mTitleView.setText(title);
+        }
     }
 
     /**
@@ -371,6 +359,15 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
      */
     protected boolean hasBaseLayout() {
         return true;
+    }
+
+    /**
+     * toolbar title是否居中
+     *
+     * @return
+     */
+    protected boolean isTitleCenter() {
+        return false;
     }
 
     /**
@@ -450,49 +447,6 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
 
     }
 
-    //**************************权限******************************//
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PermissionHelper.REQUEST_CODE_PERMISSON) {
-            if (!verifyPermissions(grantResults)) {
-                permissionGrantedFail();
-            } else {
-                permissionGrantedSuccess();
-            }
-
-        }
-    }
-
-    /**
-     * 请求权限成功后回调
-     */
-    protected void permissionGrantedSuccess() {
-        //请求权限成功后调用
-    }
-
-    /**
-     * 请求权限失败后回调
-     */
-    protected void permissionGrantedFail() {
-        PermissionHelper.showTipsDialog(this);
-    }
-
-
-    /**
-     * 检测所有的权限是否都已授权
-     *
-     * @param grantResults
-     * @return
-     */
-    private boolean verifyPermissions(int[] grantResults) {
-        for (int grantResult : grantResults) {
-            if (grantResult != PackageManager.PERMISSION_GRANTED) {
-                return false;
-            }
-        }
-        return true;
-    }
     //**************************页面跳转******************************//
 
     /**
@@ -568,15 +522,8 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
         if (!TextUtils.isEmpty(action)) {
             intent.setAction(action);
         }
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
         startActivityForResult(intent, requestCode);
         overrideAnim(0);
-//        } else {
-//            bundleOption = bundleOption == null ? ActivityOptions.makeSceneTransitionAnimation(this).toBundle() : bundleOption;
-//            startActivityForResult(intent, requestCode, bundleOption);
-//
-//        }
-
         if (isFinished) {
             finish();
         }
@@ -616,19 +563,6 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
         gotoActivityForResult(toActivity, null, null, requestCode, bundleOption, false);
     }
 
-    private static final String MPARAM = "param";
-
-    protected Bundle getBundle(String... params) {
-        Bundle bundle = new Bundle();
-        int count = params.length;
-        if (params == null || count == 0) {
-            return bundle;
-        }
-        for (int i = 0; i < count; i++) {
-            bundle.putString(MPARAM + i, params[i]);
-        }
-        return bundle;
-    }
 
     @Override
     public void onBackPressed() {
@@ -642,7 +576,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity implements BaseL
 
     }
 
-    public void onFragmentBack() {
+    protected void onFragmentBack() {
 
     }
 
