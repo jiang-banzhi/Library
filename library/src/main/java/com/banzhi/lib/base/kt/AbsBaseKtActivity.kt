@@ -190,7 +190,7 @@ abstract class AbsBaseKtActivity : AppCompatActivity(), View.OnClickListener, Ba
         // 如有当前在使用的->隐藏当前的
         if (currentFragment != null) {
             if (hideCurrentFragment) {
-                transaction.hide(currentFragment)
+                transaction.hide(currentFragment as Fragment)
             }
         }
         val toClassName = toFragment.javaClass.simpleName

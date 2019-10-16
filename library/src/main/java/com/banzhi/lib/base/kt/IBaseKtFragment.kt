@@ -29,13 +29,14 @@ abstract class IBaseKtFragment<V : IView, T : BasePresenter<V>> : AbsBaseKtFragm
         }
     }
 
+
     override fun onDestroy() {
         super.onDestroy()
         if (mPresenter != null)
             mPresenter!!.detachView()
     }
 
-    override fun getContext(): Context {
+    override fun getContext(): Context? {
         return super.getContext()
     }
 

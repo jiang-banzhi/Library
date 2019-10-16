@@ -99,21 +99,24 @@ abstract class AbsBaseKtFragment :Fragment(),BaseLayout.OnBaseLayoutClickListene
         super.onCreate(savedInstanceState)
         if (savedInstanceState != null) {
             val isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN)
-            val ft = fragmentManager.beginTransaction()
+            val ft = fragmentManager?.beginTransaction()
             if (isSupportHidden) {
-                ft.hide(this)
+                ft?.hide(this)
             } else {
-                ft.show(this)
+                ft?.show(this)
             }
-            ft.commit()
+            ft?.commit()
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
         outState!!.putBoolean(STATE_SAVE_IS_HIDDEN, isHidden)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mIsDestroyed = false//设置未销毁
         mViews = SparseArray()
         if (mRootView == null) {//第一次加载
