@@ -76,7 +76,7 @@ public final class CrashUtils {
                 if (handleCrashProxy!=null){
                     try {
                         handleCrashProxy.handleCrash(CRASH_HEAD,e);
-                        Thread.sleep(10000);
+                        Thread.sleep(3000);
                     } catch (InterruptedException e1) {
                         e1.printStackTrace();
                     }

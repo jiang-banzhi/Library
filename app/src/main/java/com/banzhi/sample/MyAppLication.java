@@ -1,6 +1,7 @@
 package com.banzhi.sample;
 
 import com.banzhi.lib.application.App;
+import com.banzhi.lib.utils.CrashUtils;
 import com.banzhi.rxhttp.interceptor.RetryInterceptor;
 
 /**
@@ -20,6 +21,7 @@ public class MyAppLication extends App {
 
     @Override
     protected String getCrashDir() {
+        CrashUtils.initHandleCrashProxy(new HandleCrashManager());
         return null;
     }
 

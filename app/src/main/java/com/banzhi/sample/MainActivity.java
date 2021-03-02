@@ -27,7 +27,6 @@ public class MainActivity extends IBaseActivity {
 
     @Override
     protected int getLayoutId() {
-
         return R.layout.activity_main;
     }
 
@@ -35,9 +34,16 @@ public class MainActivity extends IBaseActivity {
     protected void initView(Bundle savedInstanceState) {
         mToolbar.setNavigationIcon(R.mipmap.ic_launcher);
 
-        TextView textView = findView(R.id.text);
+//        TextView textView = findView(R.id.text);
+        TextView textView = null;
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Throwable e = new Throwable();
+                new HandleCrashManager().handleCrash("extra", e);
+            }
+        });
     }
-
 
 
     @Override
@@ -49,7 +55,6 @@ public class MainActivity extends IBaseActivity {
     protected boolean isTitleCenter() {
         return true;
     }
-
 
 
     @Override
