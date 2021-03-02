@@ -5,6 +5,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.banzhi.lib.listener.HandleCrashProxy;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -27,13 +30,13 @@ import java.util.Locale;
 public final class CrashUtils {
 
     private static boolean mInitialized;
-    private static String  defaultDir;
-    private static String  dir;
-    private static String  versionName;
-    private static int     versionCode;
+    private static String defaultDir;
+    private static String dir;
+    private static String versionName;
+    private static int versionCode;
 
     private static final String FILE_SEP = System.getProperty("file.separator");
-    private static final Format FORMAT   = new SimpleDateFormat("MM-dd HH-mm-ss", Locale.getDefault());
+    private static final Format FORMAT = new SimpleDateFormat("MM-dd HH-mm-ss", Locale.getDefault());
 
     private static final String CRASH_HEAD;
 
@@ -70,14 +73,23 @@ public final class CrashUtils {
                     System.exit(0);
                     return;
                 }
+                if (handleCrashProxy!=null){
+                    try {
+                        handleCrashProxy.handleCrash(CRASH_HEAD,e);
+                        Thread.sleep(10000);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                Log.e("TIME 84",new Date().toString());
                 Date now = new Date(System.currentTimeMillis());
                 String fileName = FORMAT.format(now) + ".txt";
                 final String fullPath = (dir == null ? defaultDir : dir) + fileName;
-            if (!createOrExistsFile(fullPath)) return;
+                if (!createOrExistsFile(fullPath)) return;
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Throwable throwable=new Throwable(e);
+                        Throwable throwable = new Throwable(e);
                         PrintWriter pw = null;
                         try {
                             pw = new PrintWriter(new FileWriter(fullPath, false));
@@ -99,6 +111,7 @@ public final class CrashUtils {
                 }).start();
                 if (DEFAULT_UNCAUGHT_EXCEPTION_HANDLER != null) {
                     DEFAULT_UNCAUGHT_EXCEPTION_HANDLER.uncaughtException(t, e);
+                    Log.e("TIME 114",new Date().toString());
                 }
             }
         };
@@ -106,6 +119,12 @@ public final class CrashUtils {
 
     private CrashUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
+    private static HandleCrashProxy handleCrashProxy;
+
+    public static void initHandleCrashProxy(HandleCrashProxy proxy) {
+        handleCrashProxy = proxy;
     }
 
     /**

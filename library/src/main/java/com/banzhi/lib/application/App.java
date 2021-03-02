@@ -48,6 +48,15 @@ public abstract class App extends Application {
      */
     protected abstract RetryInterceptor.TokenProxy getTokenProxy();
 
+    protected boolean openCrash() {
+        return true;
+    }
+
+
+    protected boolean openRxHttp() {
+        return true;
+    }
+
     /**
      * 初始tinker
      */
@@ -60,11 +69,15 @@ public abstract class App extends Application {
         sContext = getApplicationContext();
         initUtils();
         intLog();
-        initCrash();
-        RxHttp.init(getApplicationContext());
-        RxHttp.getInstance(getBaseUrl())
-                .setTokenProxy(getTokenProxy())
-                .create();
+        if (openCrash()) {
+            initCrash();
+        }
+        if (openRxHttp()) {
+            RxHttp.init(getApplicationContext());
+            RxHttp.getInstance(getBaseUrl())
+                    .setTokenProxy(getTokenProxy())
+                    .create();
+        }
     }
 
     /**
