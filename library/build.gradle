@@ -1,6 +1,7 @@
 apply plugin: rootProject.ext.plugins.library
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: 'https://gist.githubusercontent.com/jiang-banzhi/f474047a8e824a829ac36aae408add95/raw/5e8a14713600924da90520a9734ee14ba3b69aed/mvn_push.gradle'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -44,7 +45,6 @@ dependencies {
     compile 'com.uber.autodispose:autodispose-android-archcomponents:0.8.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
-apply from: 'mevan.gradle'
 repositories {
     mavenCentral()
 }
