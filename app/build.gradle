@@ -43,6 +43,8 @@ dependencies {
     compile project(":library")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 //    compile 'com.banzhi.lib:library:1.0.6'
+//    implementation 'com.github.jiang-banzhi:Library:1.1.3'
+
 }
 repositories {
     mavenCentral()

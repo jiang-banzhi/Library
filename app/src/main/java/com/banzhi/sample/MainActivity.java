@@ -34,8 +34,7 @@ public class MainActivity extends IBaseActivity {
     protected void initView(Bundle savedInstanceState) {
         mToolbar.setNavigationIcon(R.mipmap.ic_launcher);
 
-//        TextView textView = findView(R.id.text);
-        TextView textView = null;
+        TextView textView = findView(R.id.text);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
