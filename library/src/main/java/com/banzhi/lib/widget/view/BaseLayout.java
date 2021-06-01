@@ -1,11 +1,12 @@
 package com.banzhi.lib.widget.view;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.NonNull;
 
 import com.banzhi.lib.utils.ViewUtils;
 import com.banzhi.library.R;

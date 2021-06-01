@@ -6,12 +6,12 @@ ext {
 
     android = [
             applicationId    : "com.banzhi.lib",
-            compileSdkVersion: 28,
-            buildToolsVersion: "28.0.0",
+            compileSdkVersion: 30,
+            buildToolsVersion: "30.0.0",
             minSdkVersion    : 19,
-            targetSdkVersion : 28,
-            versionCode      : 5,
-            versionName      : "1.0.5"
+            targetSdkVersion : 30,
+            versionCode      : 6,
+            versionName      : "2.0.1"
     ]
     version = [
             supportVersion   : "28.0.0",
@@ -21,12 +21,8 @@ ext {
     ]
 
     dependencies = [
-            fragment       : "com.android.support:support-fragment:${version.supportVersion}",
-            appCompat      : "com.android.support:appcompat-v7:${version.supportVersion}",
-            design         : "com.android.support:design:${version.supportVersion}",
-            recyclerview   : "com.android.support:recyclerview-v7:${version.supportVersion}",
-            flexbox        : "com.google.android:flexbox:${version.flexboxVersion}",
-            constraint     : "com.android.support.constraint:constraint-layout:${version.constraintVersion}",
+            appCompat      : 'androidx.appcompat:appcompat:1.0.0',
+            design         : 'com.google.android.material:material:1.0.0',
             //rx
             retrofit       : 'com.squareup.retrofit2:retrofit:2.2.0',
             converter_gson : 'com.squareup.retrofit2:converter-gson:2.2.0',

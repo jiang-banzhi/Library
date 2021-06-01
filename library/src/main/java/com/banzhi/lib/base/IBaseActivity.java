@@ -1,9 +1,10 @@
 package com.banzhi.lib.base;
 
-import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
 
 import com.uber.autodispose.AutoDispose;
 import com.uber.autodispose.AutoDisposeConverter;
@@ -17,8 +18,9 @@ public abstract class IBaseActivity<V extends IView, T extends BasePresenter<V>>
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = getInstance(this, 1);
-        if (mPresenter != null)
+        if (mPresenter != null) {
             mPresenter.attachView((V) this);
+        }
         super.onCreate(savedInstanceState);
     }
 
@@ -27,8 +29,9 @@ public abstract class IBaseActivity<V extends IView, T extends BasePresenter<V>>
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mPresenter != null)
+        if (mPresenter != null) {
             mPresenter.detachView();
+        }
     }
 
     @Override

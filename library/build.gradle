@@ -12,7 +12,7 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
 
@@ -30,11 +30,10 @@ dependencies {
     compile rootProject.ext.dependencies.appCompat
     compile rootProject.ext.dependencies.design
     compile rootProject.ext.dependencies.gson
-//    compile rootProject.ext.dependencies.flexbox
-    compile 'com.github.jiang-banzhi:RxHttp:1.0.10'
+    compile 'com.github.jiang-banzhi:RxHttp:2.0.1'
     compile 'com.github.jiang-banzhi:permission:2.0.3'
-    compile 'com.github.jiang-banzhi:IndexRecyclerView:1.0.7'
-    compile 'com.github.jiang-banzhi:StatusMamager:1.0.6'
+    compile 'com.github.jiang-banzhi:IndexRecyclerView:2.0.1'
+    compile 'com.github.jiang-banzhi:StatusMamager:2.0.1'
     //AutoDispose解决RxJava内存泄漏
     compile 'com.uber.autodispose:autodispose:0.8.0'
     compile 'com.uber.autodispose:autodispose-android:0.8.0'

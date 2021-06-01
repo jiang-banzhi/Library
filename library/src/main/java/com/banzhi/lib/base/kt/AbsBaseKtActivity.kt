@@ -3,15 +3,6 @@ package com.banzhi.lib.base.kt
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.annotation.StringRes
-import android.support.design.widget.AppBarLayout
-import android.support.design.widget.AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
-import android.support.design.widget.AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.text.TextUtils
 import android.util.Log
 import android.util.SparseArray
@@ -20,10 +11,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import com.banzhi.lib.application.App
 import com.banzhi.lib.utils.BarUtils
 import com.banzhi.lib.widget.view.BaseLayout
 import com.banzhi.library.R
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
+import com.google.android.material.appbar.AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
+import com.google.android.material.snackbar.Snackbar
 
 /**
  *<pre>
@@ -214,7 +214,7 @@ abstract class AbsBaseKtActivity : AppCompatActivity(), View.OnClickListener, Ba
     }
 
     protected fun setScrollFlg(@AppBarLayout.LayoutParams.ScrollFlags flags: Int) {
-        val appbar = findViewById(R.id.appbar) as AppBarLayout
+        val appbar = findViewById<AppBarLayout>(R.id.appbar)
         val mParams = appbar.getChildAt(0).layoutParams as AppBarLayout.LayoutParams
         mParams.scrollFlags = flags//的时候AppBarLayout下的toolbar就不会随着滚动条折叠
 

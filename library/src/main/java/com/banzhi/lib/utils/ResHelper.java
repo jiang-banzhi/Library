@@ -2,9 +2,10 @@ package com.banzhi.lib.utils;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DimenRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
+
+import androidx.annotation.DimenRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
 
 import java.lang.reflect.Field;
 

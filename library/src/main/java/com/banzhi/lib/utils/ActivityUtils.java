@@ -5,8 +5,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.util.ArrayMap;
+
+import androidx.annotation.NonNull;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

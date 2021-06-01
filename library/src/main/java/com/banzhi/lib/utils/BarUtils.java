@@ -6,10 +6,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Display;
@@ -23,6 +19,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import java.lang.reflect.Method;
 
@@ -613,7 +614,9 @@ public final class BarUtils {
 
     public static void addMarginTopEqualStatusBarHeight(@NonNull View view) {
         Object haveSetOffset = view.getTag(TAG_OFFSET);
-        if (haveSetOffset != null && (Boolean) haveSetOffset) return;
+        if (haveSetOffset != null && (Boolean) haveSetOffset) {
+            return;
+        }
         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
         layoutParams.setMargins(layoutParams.leftMargin,
                 layoutParams.topMargin + getStatusBarHeight(),
@@ -685,7 +688,9 @@ public final class BarUtils {
     }
 
     private static int getStatusBarColor(final int color, final int alpha) {
-        if (alpha == 0) return color;
+        if (alpha == 0) {
+            return color;
+        }
         float a = 1 - alpha / 255f;
         int red = (color >> 16) & 0xff;
         int green = (color >> 8) & 0xff;

@@ -2,10 +2,6 @@ package com.banzhi.lib.base;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -15,6 +11,11 @@ import android.widget.CheckedTextView;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.StringRes;
 
 /**
  * <pre>
@@ -55,8 +56,9 @@ public class ViewHolder {
 
     public ViewHolder setText(@IdRes int resId, String values) {
         TextView textView = getView(resId);
-        if (!TextUtils.isEmpty(values))
+        if (!TextUtils.isEmpty(values)) {
             textView.setText(values);
+        }
         return this;
     }
 
@@ -81,8 +83,9 @@ public class ViewHolder {
 
     public ViewHolder setImageBitmap(@IdRes int viewId, Bitmap bitmap) {
         ImageView view = getView(viewId);
-        if (bitmap != null)
+        if (bitmap != null) {
             view.setImageBitmap(bitmap);
+        }
         return this;
     }
 

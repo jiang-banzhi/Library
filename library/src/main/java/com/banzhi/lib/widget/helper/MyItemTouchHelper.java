@@ -1,6 +1,7 @@
 package com.banzhi.lib.widget.helper;
 
-import android.support.v7.widget.helper.ItemTouchHelper;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
 
 import java.lang.reflect.Field;
 

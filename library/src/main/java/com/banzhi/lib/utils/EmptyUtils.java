@@ -1,12 +1,13 @@
 package com.banzhi.lib.utils;
 
 import android.os.Build;
-import android.support.v4.util.LongSparseArray;
-import android.support.v4.util.SimpleArrayMap;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
 import android.util.SparseLongArray;
+
+import androidx.collection.LongSparseArray;
+import androidx.collection.SimpleArrayMap;
 
 import java.lang.reflect.Array;
 import java.util.Collection;

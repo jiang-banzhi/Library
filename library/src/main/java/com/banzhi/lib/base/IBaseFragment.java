@@ -1,10 +1,11 @@
 package com.banzhi.lib.base;
 
-import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
 
 import com.uber.autodispose.AutoDispose;
 import com.uber.autodispose.AutoDisposeConverter;
@@ -33,8 +34,9 @@ public abstract class IBaseFragment<V extends IView, T extends BasePresenter<V>>
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mPresenter != null)
+        if (mPresenter != null) {
             mPresenter.detachView();
+        }
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.banzhi.lib.base.kt
 
-import android.arch.lifecycle.Lifecycle
 import android.content.Context
 import android.os.Bundle
+import androidx.lifecycle.Lifecycle
 import com.banzhi.lib.base.BasePresenter
 import com.banzhi.lib.base.IView
 import com.uber.autodispose.AutoDispose
