@@ -31,7 +31,7 @@ dependencies {
     compile rootProject.ext.dependencies.design
     compile rootProject.ext.dependencies.gson
 //    compile rootProject.ext.dependencies.flexbox
-    compile 'com.github.jiang-banzhi:RxHttp:1.0.10'
+    compile 'com.github.jiang-banzhi:RxHttp:1.0.12'
     compile 'com.github.jiang-banzhi:permission:2.0.3'
     compile 'com.github.jiang-banzhi:IndexRecyclerView:1.0.7'
     compile 'com.github.jiang-banzhi:StatusMamager:1.0.6'
