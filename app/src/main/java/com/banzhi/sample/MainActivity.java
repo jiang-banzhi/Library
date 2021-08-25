@@ -1,15 +1,22 @@
 package com.banzhi.sample;
 
+import android.Manifest;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.banzhi.lib.base.IBaseActivity;
 import com.banzhi.lib.utils.BarUtils;
+import com.banzhi.permission_kt.AndPermisstion;
+import com.banzhi.permission_kt.PermissionCallback;
+
+import java.util.List;
 
 
 public class MainActivity extends IBaseActivity {
@@ -38,12 +45,31 @@ public class MainActivity extends IBaseActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Throwable e = new Throwable();
-                new HandleCrashManager().handleCrash("extra", e);
+                test();
+//                Throwable e = new Throwable();
+//                new HandleCrashManager().handleCrash("extra", e);
             }
         });
     }
 
+
+    private void test(){
+        AndPermisstion.Companion.getInstance()
+                .newBuilder()
+                .permissions(Manifest.permission.REQUEST_INSTALL_PACKAGES)
+                .request(new PermissionCallback() {
+                    @Override
+                    public void onGranted() {
+                        Toast.makeText(MainActivity.this, "授权成功!", Toast.LENGTH_SHORT).show();
+                        Log.e("MainActivity", "onGranted");
+                    }
+
+                    @Override
+                    public void onDenied(List<String> list) {
+                        Log.e("MainActivity", "onDenied: ******>" + list);
+                    }
+                });
+    }
 
     @Override
     public void setTitle(int resId) {
