@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(":library")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-//    implementation 'com.github.jiang-banzhi:Library:1.0.6'
+//    implementation 'com.github.jiang-banzhi:Library:1.0.9'
 
 }
 repositories {
