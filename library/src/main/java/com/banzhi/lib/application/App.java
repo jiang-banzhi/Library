@@ -24,7 +24,7 @@ import java.util.List;
  */
 
 public abstract class App extends Application {
-    private static List<Activity> apps = new ArrayList<>();
+    public static List<Activity> apps = new ArrayList<>();
     private static Context sContext;
 
     /**
@@ -178,5 +178,27 @@ public abstract class App extends Application {
 
     public static int getStackActivitiesNum() {
         return apps.size();
+    }
+
+    /**
+     * 回退到指定activity
+     * @param cls 指定activity
+     * @param finishThis 是否销毁指定activity
+     */
+    public static void backToAcitity(Class<?> cls, boolean finishThis) {
+        Iterator<Activity> it = apps.iterator();
+        while (it.hasNext()) {
+            Activity s = it.next();
+            if (cls.equals(s.getClass())) {
+                if (finishThis) {
+                    it.remove();
+                    s.finish();
+                }
+                break;
+            } else {
+                it.remove();
+                s.finish();
+            }
+        }
     }
 }
