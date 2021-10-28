@@ -27,17 +27,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    compile rootProject.ext.dependencies.appCompat
-    compile rootProject.ext.dependencies.design
-    compile rootProject.ext.dependencies.gson
-    compile 'com.github.jiang-banzhi:RxHttp:2.0.1'
-    compile 'com.github.jiang-banzhi:permission:2.0.3'
-    compile 'com.github.jiang-banzhi:IndexRecyclerView:2.0.1'
-    compile 'com.github.jiang-banzhi:StatusMamager:2.0.1'
+    api rootProject.ext.dependencies.appCompat
+    api rootProject.ext.dependencies.design
+    api rootProject.ext.dependencies.gson
+    api 'com.github.jiang-banzhi:RxHttp:2.0.2'
+    api 'com.github.jiang-banzhi:IndexRecyclerView:2.1'
+    api 'com.github.jiang-banzhi:StatusMamager:2.0.1'
     //AutoDispose解决RxJava内存泄漏
-    compile 'com.uber.autodispose:autodispose:0.8.0'
-    compile 'com.uber.autodispose:autodispose-android:0.8.0'
-    compile 'com.uber.autodispose:autodispose-android-archcomponents:0.8.0'
+    api 'com.uber.autodispose:autodispose:0.8.0'
+    api 'com.uber.autodispose:autodispose-android:0.8.0'
+    api 'com.uber.autodispose:autodispose-android-archcomponents:0.8.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
