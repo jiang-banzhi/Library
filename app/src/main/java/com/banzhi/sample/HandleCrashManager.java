@@ -37,7 +37,7 @@ public class HandleCrashManager implements HandleCrashProxy {
         Log.e("handleCrash", sb.toString());
         Log.e("TIME 38", new Date().toString());
         String url = "http://120.24.152.60:5000/v1/home/AddAppError";
-        RxHttp.getService(CrashServer.class)
+        RxHttp.Companion.getInstance().getService(CrashServer.class)
                 .crashReport(url, new CrashBean(sb.toString()))
                 .enqueue(new Callback<BaseBean>() {
                     @Override

@@ -2,7 +2,6 @@ package com.banzhi.sample;
 
 import com.banzhi.lib.application.App;
 import com.banzhi.lib.utils.CrashUtils;
-import com.banzhi.rxhttp.interceptor.RetryInterceptor;
 
 /**
  * <pre>
@@ -26,12 +25,9 @@ public class MyAppLication extends App {
     }
 
     @Override
-    protected RetryInterceptor.TokenProxy getTokenProxy() {
-        return null;
-    }
-
-    @Override
     protected void init() {
 
     }
+
+
 }

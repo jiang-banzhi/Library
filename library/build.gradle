@@ -30,7 +30,7 @@ dependencies {
     api rootProject.ext.dependencies.appCompat
     api rootProject.ext.dependencies.design
     api rootProject.ext.dependencies.gson
-    api 'com.github.jiang-banzhi:RxHttp:2.0.2'
+    api 'com.github.jiang-banzhi:RxHttp:2.0.3'
     api 'com.github.jiang-banzhi:IndexRecyclerView:2.1'
     api 'com.github.jiang-banzhi:StatusMamager:2.0.1'
     //AutoDispose解决RxJava内存泄漏

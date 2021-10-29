@@ -15,6 +15,10 @@ android {
         versionName rootProject.ext.android.versionName
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        }
     }
     buildTypes {
         release {
@@ -37,7 +41,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(":library")
-//    implementation 'com.github.jiang-banzhi:Library:1.0.4.1'
+//    implementation 'com.github.jiang-banzhi:Library:2.0.2'
 
 }
 repositories {
