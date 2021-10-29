@@ -7,7 +7,6 @@ import com.banzhi.lib.utils.CrashUtils
 import com.banzhi.lib.utils.LogUtils
 import com.banzhi.lib.utils.Utils
 import com.banzhi.lib.utils.ValidateUtils
-import com.banzhi.library.BuildConfig
 import com.banzhi.rxhttp.RxHttp
 import com.banzhi.rxhttp.interceptor.CacheInterceptor
 import com.banzhi.rxhttp.interceptor.RequestInterceptor
@@ -23,7 +22,7 @@ import java.util.concurrent.TimeUnit
  * desc :
 </pre> *
  */
-abstract class App : Application() {
+open abstract class App : Application() {
     /**
      * 网络请求地址
      *
@@ -38,11 +37,11 @@ abstract class App : Application() {
      */
     protected abstract val crashDir: String?
 
-    protected fun openCrash(): Boolean {
+    protected open fun openCrash(): Boolean {
         return true
     }
 
-    protected fun openRxHttp(): Boolean {
+    protected open fun openRxHttp(): Boolean {
         return true
     }
 
